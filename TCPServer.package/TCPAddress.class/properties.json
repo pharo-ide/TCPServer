@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "DenisKudryashov 12/17/2015 15:00",
+	"super" : "Object",
+	"category" : "TCPServer",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"ip",
+		"port"
+	],
+	"name" : "TCPAddress",
+	"type" : "normal"
+}

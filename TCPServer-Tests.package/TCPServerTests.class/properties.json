@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TCPServerTestCase",
+	"category" : "TCPServer-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TCPServerTests",
+	"type" : "normal"
+}

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "TCPServer",
+	"category" : "TCPServer-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"lastIncomingConnection"
+	],
+	"name" : "TCPServerStub",
+	"type" : "normal"
+}
