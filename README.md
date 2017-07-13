@@ -13,7 +13,7 @@ TCPServer runningServers
 ## Installation
 ```Smalltalk
 Metacello new
-  baseline: 'Calypso';
-  repository: 'github://dionisiydk/Calypso';
+  baseline: 'TCPServer';
+  repository: 'github://dionisiydk/TCPServer';
   load
 ```
