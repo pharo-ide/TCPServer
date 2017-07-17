@@ -17,3 +17,9 @@ Metacello new
   repository: 'github://dionisiydk/TCPServer';
   load
 ```
+Use following snippet for stable dependency in your project baseline:
+```Smalltalk
+spec
+    baseline: 'TCPServer'
+    with: [ spec repository: 'github://dionisiydk/TCPServer:v0.1.x' ]
+```
