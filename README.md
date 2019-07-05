@@ -21,5 +21,5 @@ Use following snippet for stable dependency in your project baseline:
 ```Smalltalk
 spec
     baseline: 'TCPServer'
-    with: [ spec repository: 'github://dionisiydk/TCPServer:v0.1.x' ]
+    with: [ spec repository: 'github://dionisiydk/TCPServer:v1.0.0' ]
 ```
