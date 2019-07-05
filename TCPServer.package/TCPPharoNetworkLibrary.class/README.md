@@ -1,1 +1,0 @@
-I am facade for standard sockets implementation from Squeak
