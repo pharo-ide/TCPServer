@@ -14,7 +14,7 @@ TCPServer runningServers
 ```Smalltalk
 Metacello new
   baseline: 'TCPServer';
-  repository: 'github://dionisiydk/TCPServer';
+  repository: 'github://pharo-ide/TCPServer';
   load
 ```
 Use following snippet for stable dependency in your project baseline:
