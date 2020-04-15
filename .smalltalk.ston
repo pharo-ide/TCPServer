@@ -2,7 +2,7 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'Basys',
+      #baseline : 'TCPServer',
       #platforms : [ #pharo ]
     }
   ]
