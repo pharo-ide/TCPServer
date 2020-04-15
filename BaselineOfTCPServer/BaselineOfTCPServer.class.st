@@ -16,3 +16,9 @@ BaselineOfTCPServer >> baseline: spec [
 			group: 'Core' with: #(#'TCPServer');
 			group: 'Tests' with: #(#'TCPServer-Tests')]
 ]
+
+{ #category : #accessing }
+BaselineOfBasys >> projectClass [
+	^ [ self class environment at: #MetacelloCypressBaselineProject ]
+		on: NotFound
+		do: [ super projectClass ]
