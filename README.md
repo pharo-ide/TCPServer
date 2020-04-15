@@ -1,4 +1,6 @@
 # TCPServer
+[![Build Status](https://travis-ci.org/pharo-ide/TCPServer.svg?branch=master)](https://travis-ci.org/pharo-ide/TCPServer)
+
 It is a most primitive TCP server. 
 
 It implement classic incoming connections loop which running in background process. 
