@@ -18,7 +18,7 @@ BaselineOfTCPServer >> baseline: spec [
 ]
 
 { #category : #accessing }
-BaselineOfBasys >> projectClass [
+BaselineOfTCPServer >> projectClass [
 	^ [ self class environment at: #MetacelloCypressBaselineProject ]
 		on: NotFound
 		do: [ super projectClass ]
