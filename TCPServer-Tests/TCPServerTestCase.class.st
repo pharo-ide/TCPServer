@@ -45,7 +45,7 @@ TCPServerTestCase >> setUp [
 	
 	clientSockets := OrderedCollection new.
 	
-	server := self serverClass on: 40422
+	server := self serverClass new
 ]
 
 { #category : #running }

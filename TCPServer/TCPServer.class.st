@@ -1,11 +1,37 @@
 "
 I am most primitive TCP server. I implement classic incoming connections loop. My subclasses should implement #processNewConnection: .
 
-I am created by #on: message with port number as argument.  Then you should call #start  to run listener socket and incoming connections loop.
-I have list of running servers on class side.
-#stop message will close listener socket and terminate incoming connections process. 
+To start a server simply create an instance and ask it to #start:
 
-I delegate sockets creation to TCPNetworkLibrary implementation. It provides simple hook to set up different socket libraries (like Ocean).
+	server := TCPServerSubclass new.
+	server start.
+
+It will run listener socket and incoming connections loop.
+
+By default I allow OS to assign free port for me (using zero port number):
+
+	server := TCPServerSubclass new.
+	server port. ""==> 0""
+	server start.
+	server port > 0 ""==> true""
+
+But users can specify concrete port using #on: message: 
+
+	server := TCPServerSubclass on: 40422
+
+If given port is busy the #start message will signal an error.
+		
+To stop the server use #stop message: 
+	
+	server stop.
+	
+It will close listener socket and terminate incoming connections loop. 
+
+I maintain the list of all running servers on my class side variable #RunningServers.
+
+Implementation details
+
+I delegate sockets creation to TCPNetworkLibrary implementation. It provides simple hook to set up different socket libraries (like Ocean) and simplifies testing.
 
 Public API and Key Messages
 
@@ -19,8 +45,8 @@ Internal Representation and Key Implementation Points.
 	incomingConnectionsProcess:		<Process>
 	listenerSocket:		<Socket>
 	networkLibrary:		<TCPNetworkLibrary>
-	port:		<Number>
-	processingPriority:		<Number>
+	port:		<SmallInteger>
+	processingPriority:		<SmallInteger>
 
 "
 Class {
@@ -38,7 +64,7 @@ Class {
 		'AlwaysRestart',
 		'RunningServers'
 	],
-	#category : 'TCPServer'
+	#category : #TCPServer
 }
 
 { #category : #accessing }
@@ -150,6 +176,7 @@ TCPServer >> incomingConnectionsProcess: anObject [
 TCPServer >> initialize [ 
 	super initialize.
 	
+	port := 0. "zero specifies self assigned port for server (assigned by OS)"
 	networkLibrary := TCPPharoNetworkLibrary.
 	processingPriority := Processor highIOPriority.
 	listeningTimeout := 10 seconds
@@ -158,7 +185,8 @@ TCPServer >> initialize [
 { #category : #private }
 TCPServer >> initializeListenerSocket [
 
-	listenerSocket := networkLibrary newListenerSocketOn: port
+	listenerSocket := networkLibrary newListenerSocketOn: port.
+	port := listenerSocket port
 ]
 
 { #category : #testing }
