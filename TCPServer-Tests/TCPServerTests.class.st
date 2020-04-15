@@ -65,6 +65,23 @@ TCPServerTests >> testHasProcessingPriorityByDefault [
 ]
 
 { #category : #tests }
+TCPServerTests >> testHasSelfAssignedZeroPortByDefault [
+
+	self assert: server port equals: 0
+]
+
+{ #category : #tests }
+TCPServerTests >> testStartingServerOnGivenPortShouldUseIt [
+
+	| requiredPort |
+	requiredPort := 40522 + 32 atRandom.
+	server port: requiredPort.
+	server start.
+
+	self assert: server port equals: requiredPort
+]
+
+{ #category : #tests }
 TCPServerTests >> testStartingServerOnPortWhichIsAlreadyInUse [
 
 	| newServer |
@@ -85,6 +102,16 @@ TCPServerTests >> testStartingServerShouldAddItToRunningList [
 	server start.
 	
 	self assert: (TCPServer runningServers includes: server)
+]
+
+{ #category : #tests }
+TCPServerTests >> testStartingServerShouldAssignRetrievedPort [
+
+	self assert: server port equals: 0.
+	
+	server start.
+
+	self assert: server port > 0
 ]
 
 { #category : #tests }

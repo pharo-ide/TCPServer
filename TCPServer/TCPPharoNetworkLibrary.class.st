@@ -26,7 +26,7 @@ TCPPharoNetworkLibrary class >> newListenerSocketOn: port [
 
 	socket isValid
 		ifFalse: [ self error: 'Cannot create socket on port ' , port asString ].
-	socket localPort = port ifFalse: [ 
+	port ~= 0 & (socket localPort ~= port) ifTrue: [ 
 		socket close; destroy.
 		self error: 'Port ' , port asString, ' is busy. Try use another port'].	
 	
