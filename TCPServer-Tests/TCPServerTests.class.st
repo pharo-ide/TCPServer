@@ -43,7 +43,7 @@ TCPServerTests >> testCorruptionListenerSocketAndThenNewConnection [
 	2 milliSeconds wait.
 	
 	server listenerSocket destroy.
-	10 milliSeconds wait.
+	100 milliSeconds wait.
 	self newConnectionToServer.
 
 	self assert: server lastIncomingConnection notNil
