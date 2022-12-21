@@ -134,7 +134,7 @@ TCPServer >> closeConnections [
 	incomingConnectionsProcess terminate.
 	incomingConnectionsProcess := nil.
 	
-	[listenerSocket close; destroy] ifError: [].
+	[listenerSocket close; destroy] on: Error do: [:err | ].
 	listenerSocket := nil.
 ]
 

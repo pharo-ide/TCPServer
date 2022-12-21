@@ -1,7 +1,7 @@
 Class {
 	#name : #TCPServerTests,
 	#superclass : #TCPServerTestCase,
-	#category : 'TCPServer-Tests'
+	#category : #'TCPServer-Tests'
 }
 
 { #category : #running }
@@ -91,8 +91,7 @@ TCPServerTests >> testStartingServerOnPortWhichIsAlreadyInUse [
 	newServer := self serverClass on: server port.
 	[
 		[newServer start.
-		self assert: false description: 'should fail'] ifError: [  ]
-	
+		self assert: false description: 'should fail'] on: Error do: [:err | ].
 	] ensure: [ newServer stop ]
 ]
 
@@ -134,7 +133,7 @@ TCPServerTests >> testStartingShouldFailIfAnotherServerAlreadyRunningOnSamePort 
 
 	newServer := server class on: server port.
 	[newServer start.
-	self assert: false description: 'should fail'] ifError: [  ]
+	self assert: false description: 'should fail'] on: Error do: [:err | ].
 ]
 
 { #category : #tests }
